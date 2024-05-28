@@ -26,16 +26,7 @@
                     <div class="flex-shrink-0">
                         <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300" alt="Your Company">
                     </div>
-                    <div class="hidden md:block">
-                        <div class="ml-10 flex items-baseline space-x-4">
-                            <!-- Current: "bg-indigo-700 text-white", Default: "text-white hover:bg-indigo-500 hover:bg-opacity-75" -->
-                            <a href="/" class="{{request()->is('/') ? 'bg-indigo-700 text-white' : 'text-white hover:bg-indigo-500 hover:bg-opacity-75'}}  rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-                            <a href="/karyawan" class="{{request()->is('karyawan') ? 'bg-indigo-700 text-white' : 'text-white hover:bg-indigo-500 hover:bg-opacity-75'}} rounded-md px-3 py-2 text-sm font-medium">Karyawan</a>
-                            <a href="/inventory" class="{{request()->is('inventory') ? 'bg-indigo-700 text-white' : 'text-white hover:bg-indigo-500 hover:bg-opacity-75'}} rounded-md px-3 py-2 text-sm font-medium">Inventory</a>
-                            <a href="#" class="text-white hover:bg-indigo-500 hover:bg-opacity-75 rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
-                            <a href="#" class="text-white hover:bg-indigo-500 hover:bg-opacity-75 rounded-md px-3 py-2 text-sm font-medium">Reports</a>
-                        </div>
-                    </div>
+                    <x-link/>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-4 flex items-center md:ml-6">

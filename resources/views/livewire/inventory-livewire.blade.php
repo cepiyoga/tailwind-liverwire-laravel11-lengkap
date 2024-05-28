@@ -1,21 +1,31 @@
 <div x-data="{openForm:false}">
     <x-slot:title>Inventory</x-slot:title>
     @if(session('sukses'))
-    <div class="rounded-md w-1/2 bg-green-50 p-4">
-        <div class="flex gap-2">
+    <div class=" rounded-md w-1/2 bg-green-50 p-4">
 
-                <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
-                </svg>
-                <h3 class="text-sm font-medium text-green-800">{{session('sukses')}}</h3>
-
-
-            <svg wire:click="hapusSession"  viewBox="0 0 1024 1024" fill="#000000" class="icon h-5 w-5 text-red-400" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M512 897.6c-108 0-209.6-42.4-285.6-118.4-76-76-118.4-177.6-118.4-285.6 0-108 42.4-209.6 118.4-285.6 76-76 177.6-118.4 285.6-118.4 108 0 209.6 42.4 285.6 118.4 157.6 157.6 157.6 413.6 0 571.2-76 76-177.6 118.4-285.6 118.4z m0-760c-95.2 0-184.8 36.8-252 104-67.2 67.2-104 156.8-104 252s36.8 184.8 104 252c67.2 67.2 156.8 104 252 104 95.2 0 184.8-36.8 252-104 139.2-139.2 139.2-364.8 0-504-67.2-67.2-156.8-104-252-104z" fill=""></path><path d="M707.872 329.392L348.096 689.16l-31.68-31.68 359.776-359.768z" fill=""></path><path d="M328 340.8l32-31.2 348 348-32 32z" fill=""></path></g></svg>
-
-
-
-
+        <div class="rounded-md bg-green-50 p-4">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm font-medium text-green-800">{{session('sukses')}}</p>
+                </div>
+                <div class="ml-auto pl-3">
+                    <div class="-mx-1.5 -my-1.5">
+                        <button type="button" class="inline-flex rounded-md bg-green-50 p-1.5 text-green-500 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-green-50">
+                            <span class="sr-only">Dismiss</span>
+                            <svg wire:click="hapusSession"  class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
     @endif
 
@@ -67,6 +77,8 @@
 
 
         </div>
+
+
         <div class="mt-8 flow-root">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -93,15 +105,35 @@
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
 
 {{--                                <a type="button" wire:click="edit({{$inv->id}})" >Edit</a>--}}
-                                <div class="flex gap-2">
+                                <div class="flex gap-2" x-data="{conformDel:false}">
                                 <button wire:click="edit({{$inv->id}})" @click="openForm=true" type="button" class="rounded-full bg-yellow-400 p-1 text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                     <x-icons.edit />
                                 </button>
 
 
-                                <button wire:click="hapus({{$inv->id}})" type="button" class="rounded-full bg-red-400 p-1 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                <button  @click="conformDel = !conformDel" type="button" class="rounded-full bg-red-400 p-1 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                     <x-icons.delete/>
                                 </button>
+
+                                    <div x-show="conformDel" class="absolute">
+                                        <div class="rounded-md bg-red-50 p-4">
+                                            <div class="flex" @click.outside="conformDel = false">
+                                                <div class="flex-shrink-0">
+                                                    <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h3 class="text-sm font-medium text-red-800">Are you sure want to delete?</h3>
+                                                    <div class="flex gap-2 mt-2 text-sm text-red-700">
+                                                        <x-btn-red namaBtn="Delete" wire:click="hapus({{$inv->id}})" />
+                                                        <x-btn-yellow namaBtn="Cancel" @click="conformDel = false"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
 
                                 </div>
 
@@ -114,6 +146,8 @@
                         <!-- More people... -->
                         </tbody>
                     </table>
+
+
                 </div>
             </div>
         </div>
