@@ -16,13 +16,9 @@ class InventoryController extends Component
     public $inventory;
     public $code;
     public $id;
-
-
-
     public $description;
     public $quantity;
     public $unit;
-
     public $isUpdate = false;
     public function render()
     {

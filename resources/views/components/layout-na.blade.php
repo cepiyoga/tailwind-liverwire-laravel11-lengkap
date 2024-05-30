@@ -18,7 +18,7 @@
   <body class="h-full">
   ```
 -->
-<div class="min-h-full">
+<div class="min-h-full" x-data="{openMobile:false}">
     <nav class="bg-indigo-600">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between">
@@ -69,7 +69,7 @@
                 </div>
                 <div class="-mr-2 flex md:hidden">
                     <!-- Mobile menu button -->
-                    <button type="button" class="relative inline-flex items-center justify-center rounded-md bg-indigo-600 p-2 text-indigo-200 hover:bg-indigo-500 hover:bg-opacity-75 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" @click="openMobile=!openMobile" class="relative inline-flex items-center justify-center rounded-md bg-indigo-600 p-2 text-indigo-200 hover:bg-indigo-500 hover:bg-opacity-75 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="absolute -inset-0.5"></span>
                         <span class="sr-only">Open main menu</span>
                         <!-- Menu open: "hidden", Menu closed: "block" -->
@@ -85,8 +85,10 @@
             </div>
         </div>
 
+
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="md:hidden" id="mobile-menu">
+        <div >
+        <div class="md:hidden" id="mobile-menu" x-show="openMobile">
             <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                 <!-- Current: "bg-indigo-700 text-white", Default: "text-white hover:bg-indigo-500 hover:bg-opacity-75" -->
                 <a href="#" class="bg-indigo-700 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
@@ -118,6 +120,7 @@
                     <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-indigo-500 hover:bg-opacity-75">Sign out</a>
                 </div>
             </div>
+        </div>
         </div>
     </nav>
 

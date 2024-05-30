@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BukaBukuTulis;
 use App\Models\Inventory;
 use App\Models\Karyawan;
 use App\Models\komputerModel;
@@ -37,10 +38,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        komputerModel::create([
-            'namapc'=>'Laptop Dell i5',
-            'jumlah'=>10,
-            'harga'=>10000
+        BukaBukuTulis::create([
+            'judul_buku'=>'Mengarang Indah',
+            'pengarang'=>'Cepi Yoga Asmara',
+            'penerbit'=>'Air Langga',
+            'tahun_terbit'=>'2022',
         ]);
     }
 }
